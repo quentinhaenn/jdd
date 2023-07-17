@@ -1,4 +1,6 @@
 import pandas as pd
+import tools.stats
+
 
 def read_file(filename, sheetname_ensma, sheetname_up) :
     """
