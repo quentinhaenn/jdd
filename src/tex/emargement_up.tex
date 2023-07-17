@@ -1,0 +1,26 @@
+\documentclass[13pt, french, a4paper]{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{fullpage}
+\usepackage{booktabs}
+\usepackage{longtable}
+
+\renewcommand{\arraystretch}{2}
+
+\title{\textsc{Liste D'Émargement UP JDD 2023}}
+\date{\vspace{-10ex}}
+
+\begin{document}
+
+\maketitle
+
+\begin{longtable}{|p{5cm}|p{4cm}|p{2cm}|p{2cm}|p{2cm}|}
+    \hline
+    \Large \textbf{Nom} & \Large \textbf{Prénom} & \large \textbf{Mercredi} &  \large \textbf{Jeudi} & \large \textbf{Vendredi} \\
+    \hline
+    \input{./noms_up.tex}
+\end{longtable}
+
+\end{document}
