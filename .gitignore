@@ -6,3 +6,7 @@
 **.xlsx
 **.xls
 **/img/**
+
+
+[Settings]
+**/.vscode/**
