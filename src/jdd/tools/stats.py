@@ -14,9 +14,9 @@ def make_stats(df, year) :
     Returns:
         None
     """
-    attendees = df['JDD ' + year].str.contains("ASSISTER")
-    posters = df['JDD ' + year].str.contains("POSTER")
-    presentations = df['JDD ' + year].str.contains("ORAL")
+    attendees = df[df['JDD ' + year].str.contains("ASSISTER")]
+    posters = df[df['JDD ' + year].str.contains("POSTER")]
+    presentations = df[df['JDD ' + year].str.contains("ORAL")]
     print(
         "RECENSEMENT MAXIMUM :\n"
         f"Nombre d'attendees maximal : {len(attendees)}\n"
@@ -44,5 +44,11 @@ def make_stats(df, year) :
         return f"{total*x/100:.0f}"
     df_stats = df.groupby("Labo ")["Nom"].nunique()
     total = df_stats.sum()
+    plt.figure()
     df_stats.plot.pie(y="Nom", autopct=formatter)
-    plt.savefig("Stats JDD " + year + ".png")
+    plt.savefig("Stats participants JDD " + year + ".png")
+    df_stats_prez = presentations.groupby('Labo ')['Nom'].nunique()
+    total = df_stats_prez.sum()
+    plt.figure()
+    df_stats_prez.plot.pie(y="Nom", autopct=formatter)
+    plt.savefig("Stats presentations JDD " + year + ".png")

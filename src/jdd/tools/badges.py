@@ -6,10 +6,16 @@ BE AWARE THAT :
 - CANNOT PROCEED EXCEL FILES
 """
 import pandas as pd
+import os
+from colorama import Fore, Style
+from colorama import init as colorama_init
+
+colorama_init()
+print(os.getcwd())
 
 def create_file(input_file, output) : 
 
-    print('Formatting data.....\n')
+    print(f'{Fore.BLUE}Formatting data.....{Style.RESET_ALL}')
     if ".csv" in input_file :
         df = pd.read_csv(input_file)
     else :
@@ -20,9 +26,10 @@ def create_file(input_file, output) :
     last_names = df['Nom'].to_list()
     first_names = df['Prénom'].to_list()
     list_combined = tuple(zip(last_names, first_names))
-    print('Writing tex file .....')
+    print(f'{Fore.BLUE}Writing tex file .....{Style.RESET_ALL}')
     with open(output,'w') as file :
         for item in list_combined :
             file.write(r"\confpin{%s}{%s}" % item)
         print('Done')
-    print("File created under %s" %output)
+    print(f"{Fore.GREEN}{Style.BRIGHT}File created under {output}{Style.RESET_ALL}")
+    
