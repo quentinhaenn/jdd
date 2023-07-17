@@ -73,7 +73,11 @@ TODO Insert CLI.
 
 ### Make badges
 
+TODO
+
 ### Make signing pages
+
+TODO
 
 ## Next steps
 
@@ -88,4 +92,7 @@ The next steps for this project are :
 
 ## Contributing
 
+There are many ways to contribute to this. See `CONTRIBUTING.md` file for mare informations.
 ## Authors
+
+- [Haenn Quentin](https://github.com/quentinhaenn) mail : quentin.haenn@ensma.fr
