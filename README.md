@@ -25,6 +25,7 @@ You'll have to deal with hundreds participants and same amount of badges, presen
 You'll be able to automatically build badges and signing pages relative to the list of participants provided by MIMME secretary, make stats and even make a random passage order for the presentations !
 
 Functionalities :
+
 1. Auto badges
 2. Auto signing pages
 3. Auto order for presentations
