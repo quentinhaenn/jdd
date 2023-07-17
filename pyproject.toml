@@ -19,4 +19,5 @@ classifiers = [
 ]
 
 [projects.urls]
-"Homepage" = 
+"Homepage" = "https://github.com/quentinhaenn/jdd"
+"Bug Tracker" = "https://github.com/quentinhaenn/jdd/issues"
