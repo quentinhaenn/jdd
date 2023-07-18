@@ -8,6 +8,13 @@ from colorama import init as colorama_init
 from colorama import Fore
 from colorama import Style
 
+OUTDIR = "out/"
+RESOURCEDIR = "src/resource/"
+TEXDIR = "out/tex/"
+
+if not os.path.isdir(OUTDIR) :
+    os.mkdir(OUTDIR)
+
 colorama_init()
 
 def read_file(filename, sheetname_ensma, sheetname_up) :
@@ -57,34 +64,38 @@ def main():
     print(args)
     print(os.getcwd())
     df_participants, df_ensma, df_up = read_file(
-        "src/resource/Participants JDD.xlsx", "ENSMA 22-23", "UP 22-23"
+        RESOURCEDIR + "Participants JDD.xlsx", "ENSMA 22-23", "UP 22-23"
         )
 
-    if os.path.exists("src/resource/noms_ensma.csv") :
-        os.remove("src/resource/noms_ensma.csv")
-        os.remove("src/resource/noms_up.csv")
-        os.remove("src/resource/noms_complet.csv")
+    if os.path.exists(RESOURCEDIR + "noms_ensma.csv") :
+        os.remove(RESOURCEDIR + "noms_ensma.csv")
+        os.remove(RESOURCEDIR + "noms_up.csv")
+        os.remove(RESOURCEDIR + "noms_complet.csv")
 
     print(f"{Fore.BLUE}Creating name files...{Style.RESET_ALL}")
-    create_namefiles(df_ensma, "src/resource/noms_ensma")
-    create_namefiles(df_up, "src/resource/noms_up")
-    create_namefiles(df_participants, "src/resource/noms_complet")
+    create_namefiles(df_ensma, RESOURCEDIR + "noms_ensma")
+    create_namefiles(df_up, RESOURCEDIR + "noms_up")
+    create_namefiles(df_participants, RESOURCEDIR + "noms_complet")
     print('Done')
-    print(f"{Fore.GREEN}{Style.BRIGHT}File created under 'src/resource/ directory{Style.RESET_ALL}")
+    print(f"{Fore.GREEN}{Style.BRIGHT}File created under '{RESOURCEDIR} directory{Style.RESET_ALL}")
 
     if args.badges :
-        print(f"{Fore.RED}Creating badge file...{Style.RESET_ALL}")
-        badges.create_file("src/resource/noms_complet.csv", "src/tex/badges.tex")
+        badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "badges.tex")
 
     if args.signing_pages :
-        print(f"{Fore.RED}Creating signing lists files...{Style.RESET_ALL}")
-        signing.create_file("src/resource/noms_ensma.csv", "src/resource/list_ensma.tex")
-        signing.create_file("src/resource/noms_up.csv", "src/resource/list_up.tex")
+        signing.create_file(RESOURCEDIR + "noms_ensma.csv", TEXDIR + "list_ensma.tex")
+        signing.create_file(RESOURCEDIR + "noms_up.csv", TEXDIR + "list_up.tex")
 
 
     if args.make_stats :
-        print(f"{Fore.RED}Creating stats about current JDDs{Style.RESET_ALL}")
-        stats.make_stats(df_participants, '2023')
+        stats.make_stats(df_participants, '2023', OUTDIR)
+
+    if not (args.badges or args.signing_pages or args.make_stats) :
+        badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "badges.tex")
+        signing.create_file(RESOURCEDIR + "noms_ensma.csv", TEXDIR + "list_ensma.tex")
+        signing.create_file(RESOURCEDIR + "noms_up.csv", TEXDIR + "list_up.tex")
+        stats.make_stats(df_participants, '2023', OUTDIR)
+
 
 if __name__ == '__main__':
     main()

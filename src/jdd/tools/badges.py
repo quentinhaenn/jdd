@@ -13,9 +13,9 @@ from colorama import init as colorama_init
 colorama_init()
 print(os.getcwd())
 
-def create_file(input_file, output) : 
-
-    print(f'{Fore.BLUE}Formatting data.....{Style.RESET_ALL}')
+def create_file(input_file, output) :
+    print(f"{Fore.BLUE}Creating badge file...{Style.RESET_ALL}")
+    print(f'{Fore.BLUE}Formatting data .....{Style.RESET_ALL}')
     if ".csv" in input_file :
         df = pd.read_csv(input_file)
     else :

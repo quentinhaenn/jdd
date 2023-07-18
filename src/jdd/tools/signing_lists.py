@@ -8,7 +8,8 @@ from colorama import Fore, Style
 colorama_init()
 
 def create_file(input_file, output_file) :
-    print(f'{Fore.BLUE}Formatting data.....{Style.RESET_ALL}')
+    print(f"{Fore.BLUE}Creating signing lists files...{Style.RESET_ALL}")
+    print(f'{Fore.BLUE}Formatting data .....{Style.RESET_ALL}')
     if '.csv' in input_file :
         df = pd.read_csv(input_file)
     else :

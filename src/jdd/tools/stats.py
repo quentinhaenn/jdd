@@ -1,7 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from colorama import init as colorama_init
+from colorama import Fore, Style
 
-def make_stats(df, year) :
+colorama_init()
+
+def make_stats(df, year, outdir) :
     """
     make_stats Make some stats about JDDs attendees.
 
@@ -14,16 +18,24 @@ def make_stats(df, year) :
     Returns:
         None
     """
+    print(f"{Fore.BLUE}Creating stats about current JDDs{Style.RESET_ALL}")
     attendees = df[df['JDD ' + year].str.contains("ASSISTER")]
     posters = df[df['JDD ' + year].str.contains("POSTER")]
     presentations = df[df['JDD ' + year].str.contains("ORAL")]
-    print(
-        "RECENSEMENT MAXIMUM :\n"
-        f"Nombre d'attendees maximal : {len(attendees)}\n"
-        f"Nombre de posters : {len(posters)}\n"
-        f"Nombre de présentations maximales : {len(presentations)}\n"
-        f"Nombre total élèves : {len(df)}"
-    )
+    with open(outdir + "stats.txt", 'w') as f :
+        f.write(
+            "==============================================\n"
+            "\n"
+            "                STATISTIQUES JDDS             \n"
+            "\n"
+            "==============================================\n"
+            "RECENSEMENT MAXIMUM :\n"
+            f"Nombre d'attendees maximal : {len(attendees)}\n"
+            f"Nombre de posters : {len(posters)}\n"
+            f"Nombre de présentations maximales : {len(presentations)}\n"
+            f"Nombre total élèves : {len(df)}\n"
+            "==============================================\n"
+        )
     nb_attendees_real = len(attendees) - len(attendees.loc[attendees["Commentaires"]
                                                            .str
                                                            .contains("exempté", na=False)])
@@ -33,22 +45,30 @@ def make_stats(df, year) :
     nb_oral_real = len(presentations) - len(presentations.loc[presentations["Commentaires"]
                                                      .str
                                                      .contains("cotutelle", na=False)])
-    print("RECENSEMENT RÉEL : \n"
-          f"Nombre d'assistants réels : {nb_attendees_real}\n"
-          f"Nombre de poster réels : {nb_posters_real}\n"
-          f"Nombre de présentations réelles : {nb_oral_real}\n"
-          f"Nombre de doctorants réels total : {nb_attendees_real + nb_posters_real + nb_oral_real}"
-    )
-
+    with open(outdir + "stats.txt", 'a') as f :
+        f.write(
+            "\n"
+            "==============================================\n"
+            "RECENSEMENT RÉEL : \n"
+            f"Nombre d'assistants réels : {nb_attendees_real}\n"
+            f"Nombre de poster réels : {nb_posters_real}\n"
+            f"Nombre de présentations réelles : {nb_oral_real}\n"
+            f"Nombre de doctorants réels total : {nb_attendees_real + nb_posters_real + nb_oral_real}\n"
+            "==============================================\n"
+        )
+    print("Done")
+    print(f"{Fore.GREEN}{Style.BRIGHT}File created under {outdir} directory{Style.RESET_ALL}")
+    print(f"{Fore.BLUE}Creating pie charts...{Style.RESET_ALL}")
     def formatter(x) :
         return f"{total*x/100:.0f}"
     df_stats = df.groupby("Labo ")["Nom"].nunique()
     total = df_stats.sum()
     plt.figure()
     df_stats.plot.pie(y="Nom", autopct=formatter)
-    plt.savefig("Stats participants JDD " + year + ".png")
+    plt.savefig(outdir + "Stats participants JDD " + year + ".png")
     df_stats_prez = presentations.groupby('Labo ')['Nom'].nunique()
     total = df_stats_prez.sum()
     plt.figure()
     df_stats_prez.plot.pie(y="Nom", autopct=formatter)
-    plt.savefig("Stats presentations JDD " + year + ".png")
+    plt.savefig(outdir + "Stats presentations JDD " + year + ".png")
+    print(f"{Fore.GREEN}{Style.BRIGHT}Stats files created under {outdir} directory{Style.RESET_ALL}")

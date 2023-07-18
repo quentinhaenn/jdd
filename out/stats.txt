@@ -1,0 +1,19 @@
+==============================================
+
+                STATISTIQUES JDDS             
+
+==============================================
+RECENSEMENT MAXIMUM :
+Nombre d'attendees maximal : 61
+Nombre de posters : 101
+Nombre de présentations maximales : 57
+Nombre total élèves : 238
+==============================================
+
+==============================================
+RECENSEMENT RÉEL : 
+Nombre d'assistants réels : 60
+Nombre de poster réels : 98
+Nombre de présentations réelles : 55
+Nombre de doctorants réels total : 213
+==============================================
