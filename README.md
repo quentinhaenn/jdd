@@ -85,6 +85,9 @@ TODO
 The next steps for this project are :
 
 - [ ] Finish README
+- [ ] Color prints
+- [ ] Make a stat file with all stats included
+- [ ] Make an out directory for all files created
 - [ ] Make all unit tests
 - [ ] Setup CI/CD
 - [ ] Deploy
