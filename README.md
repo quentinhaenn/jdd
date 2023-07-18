@@ -176,7 +176,7 @@ The next steps for this project are :
 - [x] Color prints
 - [x] Make a stat file with all stats included
 - [x] Make an out directory for all files created
-- [ ] Create the QR code functionality -> [dedicated issue](https://github.com/quentinhaenn/jdd/issues/7)
+- [x] Create the QR code functionality -> [dedicated issue](https://github.com/quentinhaenn/jdd/issues/7)
 - [ ] Create the auto-order functionality -> [dedicated issue](https://github.com/quentinhaenn/jdd/issues/8)
 - [ ] Make all unit tests
 - [x] Setup CI/CD
