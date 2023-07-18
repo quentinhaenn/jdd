@@ -43,3 +43,4 @@ def test_signing_lists():
     signing_create(TRUE_NAME_UP, TEST_DIR + 'test_list_up.tex')
     assert filecmp.cmp(TRUE_LIST_UP, TEST_DIR + 'test_list_up.tex')
 
+
