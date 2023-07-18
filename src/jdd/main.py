@@ -2,6 +2,7 @@ import pandas as pd
 import jdd.tools.stats as stats
 import jdd.tools.badges as badges
 import jdd.tools.signing_lists as signing
+import jdd.tools.qrcodes as qrcodes
 import os
 from argparse import ArgumentParser
 from colorama import init as colorama_init
@@ -60,6 +61,10 @@ def main():
     parser.add_argument('-ms', '--make-stats',
                         action='store_true',
                         help="When used, create some util stats based on input file")
+    parser.add_argument("-qr", "--qr-code",
+                        action='store_true',
+                        help='When used, will prompt the commands to create qr codes from urls and generate png files.'
+                        )
     args = parser.parse_args()
     print(args)
     print(os.getcwd())
@@ -89,8 +94,11 @@ def main():
 
     if args.make_stats :
         stats.make_stats(df_participants, OUTDIR)
+    
+    if args.qr_codes :
+        qrcodes.make_qr(OUTDIR)
 
-    if not (args.badges or args.signing_pages or args.make_stats) :
+    if not (args.badges or args.signing_pages or args.make_stats or args.qr_codes) :
         badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "badges.tex")
         signing.create_file(RESOURCEDIR + "noms_ensma.csv", TEXDIR + "list_ensma.tex")
         signing.create_file(RESOURCEDIR + "noms_up.csv", TEXDIR + "list_up.tex")
