@@ -2,9 +2,7 @@
 **.ipynb
 
 [resources]
-**.csv
-**.xlsx
-**.xls
+**/resource/**
 **/img/**
 
 
