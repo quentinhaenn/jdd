@@ -10,10 +10,13 @@ This package is made to help MIMME's JDDs organization.
   - [Requirements](#requirements)
     - [Installing Python](#installing-python)
   - [Installation](#installation)
+    - [Manual installation of dependencies](#manual-installation-of-dependencies)
   - [How to](#how-to)
+    - [Generate Everything](#generate-everything)
     - [Make stats](#make-stats)
     - [Make badges](#make-badges)
     - [Make signing pages](#make-signing-pages)
+    - [Combining Commands](#combining-commands)
   - [Next steps](#next-steps)
   - [Contributing](#contributing)
   - [Authors](#authors)
@@ -37,10 +40,10 @@ Functionalities :
 What's needed to make this work.
 
 - `Python` >= 3.7
-- `build` up-to-date
 - `Pandas` up-to-date
+- `openpyxl` up-to-date
+- `matplotlib` up-to-date
 - `qr` up-to-date
-- `click` up-to-date
 - A complete and functional LaTeX distribution ([TeXLive](https://tug.org/texlive/acquire-netinstall.html) for instance)
 
 You don't need to install them manually, `pip` will do it for you when installing, but `Python` and `pip` are mandatory to do so.
@@ -57,9 +60,37 @@ Download  `.zip` archive from github(insert link) or clone the repository on you
 
 In further release we plan to make it available on PyPi projects to make it available via pip installation. See [Next Steps](#next-steps) for more informations
 
+### Manual installation of dependencies
+
+If you do not use `pip` and PyPi repository to get this package, please remember that you do need to manually install every dependency needed. Use the following code in command prompt :
+
+```bash
+python3.7 -m pip install setuptools pandas seaborn matplotlib os colorama openpyxl
+```
+
+This will install all dependencies for you.
+
+> Note : You can modify the python version you're using e.g. : python3.10 or python 3.11.
+
+> Note : This will do the magic whether on Linux or Windows. You also can use python alone on windows is set on PATH variable.
+
 ## How to
 
 This section includes most of useful commands to help you manage participants in MIMME JDDs. Refer to the correct section for what you need.
+
+### Generate Everything
+
+To generate every single file that script is capable to, simply use :
+
+```bash
+python3.7 src/jdd/main.py <name_of_excel_file>
+```
+
+This will generate `noms_complets.csv`, `noms_ensma.csv`, `noms_up.csv`, `badges.tex`, `list_ensma.tex`, `list_up.tex`, `stats.txt`, `Stats Participants JDD.png` and `Stats presentations JDD.png` files.
+
+> Note : All `.csv` files are located in `src/resource` dir because they are reused by scripts as resources.
+
+> Note : All other files created are located in `out/` directory.
 
 ### Make stats
 
@@ -70,26 +101,72 @@ This is used to make some stats about JDDs participants :
 - Number of expected presentations
 - Stats on each laboratory represented
 
-TODO Insert CLI.
+Use the following code line in command prompt to launch it :
+
+```bash
+python3.7 src/jdd/main.py <name_of_excel_file> -ms
+```
+
+Or alternatively :
+
+```bash
+python3.7 src/jdd/main.py <name_of_excel_file> --make-stats
+```
 
 ### Make badges
 
-TODO
+To make the `badges.tex` file used to automatically make badges with LaTeX, use the following prompt :
+
+```bash
+python3.7 src/jdd/main.py <name_of_excel_file> -b
+```
+
+Or alternatively :
+
+```bash
+python3.7 src/jdd/main.py <name_of_excel_file> --badges
+```
 
 ### Make signing pages
 
-TODO
+To make the `list_ensma.tex` and `list_up.tex` files used to automatically make signing lists with LaTeX, use the following prompt :
+
+```bash
+python3.7 src/jdd/main.py <name_of_excel_file> -s
+```
+
+Or alternatively :
+
+```bash
+python3.7 src/jdd/main.py <name_of_excel_file> --signing-lists
+```
+
+### Combining Commands
+
+If you want to combine two commands, use the proper options to do so.
+
+E.G : you want to generate badges and signing lists but no stats :
+
+```bash
+python3.7 src/jdd/main.py <name_of_excel_file> -b -s
+```
+
+Or alternatively :
+
+```bash
+python3.7 src/jdd/main.py <name_of_excel_file> --badges --signing-lists
+```
 
 ## Next steps
 
 The next steps for this project are :
 
-- [ ] Finish README
-- [ ] Color prints
-- [ ] Make a stat file with all stats included
-- [ ] Make an out directory for all files created
-- [ ] Make all unit tests
-- [ ] Setup CI/CD
+- [x] Finish README
+- [x] Color prints
+- [x] Make a stat file with all stats included
+- [x] Make an out directory for all files created
+- [x] Make all unit tests
+- [x] Setup CI/CD
 - [ ] Deploy
 - [ ] Show examples
 - [ ] Make it available on PyPi
