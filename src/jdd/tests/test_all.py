@@ -1,4 +1,3 @@
-import pytest
 import filecmp
 from jdd.tools.badges import create_file as badges_create
 from jdd.tools.signing_lists import create_file as signing_create
@@ -6,7 +5,7 @@ from jdd.tools.stats import make_stats
 from jdd.main import create_namefiles, read_file
 
 TEST_DIR = "src/jdd/tests/"
-TESTFILE = "src/resource/tests_participants.xlsx"
+TESTFILE = TEST_DIR + "tests_participants.xlsx"
 
 TEST_NAME_ENSMA = TEST_DIR + 'test_ensma'
 TEST_NAME_UP = TEST_DIR + 'test_up'
