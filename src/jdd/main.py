@@ -80,11 +80,11 @@ def main():
         print(f"{Fore.RED}Creating signing lists files...{Style.RESET_ALL}")
         signing.create_file("src/resource/noms_ensma.csv", "src/resource/list_ensma.tex")
         signing.create_file("src/resource/noms_up.csv", "src/resource/list_up.tex")
-    
+
 
     if args.make_stats :
         print(f"{Fore.RED}Creating stats about current JDDs{Style.RESET_ALL}")
         stats.make_stats(df_participants, '2023')
-        
+
 if __name__ == '__main__':
     main()

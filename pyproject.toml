@@ -3,7 +3,9 @@ requires = [
     "setuptools",
     "pandas",
     "seaborn",
-    "matplotlib"
+    "matplotlib",
+    "os",
+    "colorama"
 ]
 build-backend = "setuptools.build_meta"
 
