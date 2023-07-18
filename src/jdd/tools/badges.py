@@ -32,4 +32,3 @@ def create_file(input_file, output) :
             file.write(r"\confpin{%s}{%s}" % item)
         print('Done')
     print(f"{Fore.GREEN}{Style.BRIGHT}File created under {output}{Style.RESET_ALL}")
-    

@@ -1,0 +1,44 @@
+==============================================
+
+                STATISTIQUES JDDS             
+
+==============================================
+RECENSEMENT MAXIMUM :
+Nombre d'attendees maximal : 9
+Nombre de posters : 12
+Nombre de présentations maximales : 9
+Nombre total élèves : 33
+==============================================
+
+==============================================
+RECENSEMENT RÉEL : 
+Nombre d'assistants réels : 9
+Nombre de poster réels : 12
+Nombre de présentations réelles : 9
+Nombre de doctorants réels total : 30
+==============================================
+STATS PAR LABO 
+=============================================
+NOMBRE DE 1ERE ANNEE
+LIAS:2
+LMA:1
+P’- FTC:2
+P’- GMSC:1
+P’- PMM:2
+XLIM:1
+=============================================
+NOMBRE DE POSTERS
+LIAS:5
+LMA:1
+P’- FTC:2
+P’- GMSC:1
+P’- PMM:2
+XLIM:1
+=============================================
+NOMBRE DE PRESENTATIONS
+LIAS:2
+LMA:1
+P’- FTC:2
+P’- GMSC:1
+P’- PMM:2
+XLIM:1
