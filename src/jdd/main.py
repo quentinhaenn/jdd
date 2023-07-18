@@ -1,3 +1,4 @@
+# coding=utf-8
 import pandas as pd
 import jdd.tools.stats as stats
 import jdd.tools.badges as badges
