@@ -1,11 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 from colorama import init as colorama_init
 from colorama import Fore, Style
 
 colorama_init()
 
-def make_stats(df, year, outdir) :
+def make_stats(df, outdir) :
     """
     make_stats Make some stats about JDDs attendees.
 
@@ -19,9 +20,9 @@ def make_stats(df, year, outdir) :
         None
     """
     print(f"{Fore.BLUE}Creating stats about current JDDs{Style.RESET_ALL}")
-    attendees = df[df['JDD ' + year].str.contains("ASSISTER")]
-    posters = df[df['JDD ' + year].str.contains("POSTER")]
-    presentations = df[df['JDD ' + year].str.contains("ORAL")]
+    attendees = df[df['JDD'].str.contains("ASSISTER")]
+    posters = df[df['JDD'].str.contains("POSTER")]
+    presentations = df[df['JDD'].str.contains("ORAL")]
     with open(outdir + "stats.txt", 'w') as f :
         f.write(
             "==============================================\n"
@@ -56,19 +57,35 @@ def make_stats(df, year, outdir) :
             f"Nombre de doctorants réels total : {nb_attendees_real + nb_posters_real + nb_oral_real}\n"
             "==============================================\n"
         )
+    count_attendees = attendees.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
+    count_posters = posters.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
+    count_prez =  presentations.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
+    with open(outdir + "stats.txt", "a") as f :
+        f.write("STATS PAR LABO \n"
+                "=============================================\n"
+                "NOMBRE DE 1ERE ANNEE\n"
+                )
+        count_attendees.to_csv(f,header=None, index=None, sep=':')
+        f.write("=============================================\n"
+                "NOMBRE DE POSTERS\n")
+        count_posters.to_csv(f, header=None, index=None, sep=':')
+        f.write("=============================================\n"
+                "NOMBRE DE PRESENTATIONS\n")
+        count_prez.to_csv(f, header=None, index=None, sep=':')
     print("Done")
     print(f"{Fore.GREEN}{Style.BRIGHT}File created under {outdir} directory{Style.RESET_ALL}")
     print(f"{Fore.BLUE}Creating pie charts...{Style.RESET_ALL}")
     def formatter(x) :
         return f"{total*x/100:.0f}"
-    df_stats = df.groupby("Labo ")["Nom"].nunique()
+    df_stats = df.groupby("Labo")["Nom"].nunique()
     total = df_stats.sum()
     plt.figure()
     df_stats.plot.pie(y="Nom", autopct=formatter)
-    plt.savefig(outdir + "Stats participants JDD " + year + ".png")
-    df_stats_prez = presentations.groupby('Labo ')['Nom'].nunique()
+    plt.savefig(outdir + "Stats participants JDD.png")
+    df_stats_prez = presentations.groupby('Labo')['Nom'].nunique()
     total = df_stats_prez.sum()
     plt.figure()
     df_stats_prez.plot.pie(y="Nom", autopct=formatter)
-    plt.savefig(outdir + "Stats presentations JDD " + year + ".png")
-    print(f"{Fore.GREEN}{Style.BRIGHT}Stats files created under {outdir} directory{Style.RESET_ALL}")
+    plt.savefig(outdir + "Stats presentations JDD.png")
+    print('Done')
+    print(f"{Fore.GREEN}{Style.BRIGHT}Pie charts created under {outdir} directory{Style.RESET_ALL}")

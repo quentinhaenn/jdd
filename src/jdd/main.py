@@ -64,7 +64,7 @@ def main():
     print(args)
     print(os.getcwd())
     df_participants, df_ensma, df_up = read_file(
-        RESOURCEDIR + "Participants JDD.xlsx", "ENSMA 22-23", "UP 22-23"
+        RESOURCEDIR + args.input_file, "ENSMA", "UP"
         )
 
     if os.path.exists(RESOURCEDIR + "noms_ensma.csv") :
@@ -88,14 +88,18 @@ def main():
 
 
     if args.make_stats :
-        stats.make_stats(df_participants, '2023', OUTDIR)
+        stats.make_stats(df_participants, OUTDIR)
 
     if not (args.badges or args.signing_pages or args.make_stats) :
         badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "badges.tex")
         signing.create_file(RESOURCEDIR + "noms_ensma.csv", TEXDIR + "list_ensma.tex")
         signing.create_file(RESOURCEDIR + "noms_up.csv", TEXDIR + "list_up.tex")
-        stats.make_stats(df_participants, '2023', OUTDIR)
+        stats.make_stats(df_participants, OUTDIR)
+    
 
+    print(f"{Fore.GREEN}=====================================\n"
+          f"Every task has been done successfully.\n"
+          f"====================================={Style.RESET_ALL}")
 
 if __name__ == '__main__':
     main()
