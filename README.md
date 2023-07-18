@@ -11,6 +11,7 @@ This package is made to help MIMME's JDDs organization.
     - [Installing Python](#installing-python)
   - [Installation](#installation)
     - [Manual installation of dependencies](#manual-installation-of-dependencies)
+  - [Tests](#tests)
   - [How to](#how-to)
     - [Generate Everything](#generate-everything)
     - [Make stats](#make-stats)
@@ -65,7 +66,7 @@ In further release we plan to make it available on PyPi projects to make it avai
 If you do not use `pip` and PyPi repository to get this package, please remember that you do need to manually install every dependency needed. Use the following code in command prompt :
 
 ```bash
-python3.7 -m pip install setuptools pandas seaborn matplotlib os colorama openpyxl
+python3.7 -m pip install setuptools pandas seaborn matplotlib os colorama openpyxl pytest
 ```
 
 This will install all dependencies for you.
@@ -73,6 +74,16 @@ This will install all dependencies for you.
 > Note : You can modify the python version you're using e.g. : python3.10 or python 3.11.
 
 > Note : This will do the magic whether on Linux or Windows. You also can use python alone on windows is set on PATH variable.
+
+## Tests
+
+To ensure all is set up correctly, please run :
+
+```bash
+pytest
+```
+
+If every test is passed, then everything is set up !
 
 ## How to
 
@@ -165,7 +176,9 @@ The next steps for this project are :
 - [x] Color prints
 - [x] Make a stat file with all stats included
 - [x] Make an out directory for all files created
-- [x] Make all unit tests
+- [ ] Create the QR code functionality
+- [ ] Create the auto-order functionality 
+- [ ] Make all unit tests
 - [x] Setup CI/CD
 - [ ] Deploy
 - [ ] Show examples
