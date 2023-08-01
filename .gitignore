@@ -4,8 +4,6 @@
 
 [resources]
 **/resource/**
-**/img/**
-
 
 [Settings]
 **/.vscode/**

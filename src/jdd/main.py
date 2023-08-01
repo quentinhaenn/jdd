@@ -85,7 +85,8 @@ def main():
     print(f"{Fore.GREEN}{Style.BRIGHT}File created under '{RESOURCEDIR} directory{Style.RESET_ALL}")
 
     if args.badges :
-        badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "badges.tex")
+        badges.create_template(TEXDIR + "badges.tex")
+        badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "list_complete.tex")
 
     if args.signing_pages :
         signing.create_file(RESOURCEDIR + "noms_ensma.csv", TEXDIR + "list_ensma.tex")
@@ -99,7 +100,8 @@ def main():
         qrcodes.make_qr(OUTDIR)
 
     if not (args.badges or args.signing_pages or args.make_stats or args.qr_code) :
-        badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "badges.tex")
+        badges.create_template(TEXDIR + "badges.tex")
+        badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "list_complete.tex")
         signing.create_file(RESOURCEDIR + "noms_ensma.csv", TEXDIR + "list_ensma.tex")
         signing.create_file(RESOURCEDIR + "noms_up.csv", TEXDIR + "list_up.tex")
         stats.make_stats(df_participants, OUTDIR)
