@@ -42,7 +42,7 @@ def make_stats(df, outdir):
     nb_posters_real = len(posters) - len(posters.loc[posters["Commentaires"]
                                                      .str
                                                      .contains("absent aux JDD", na=False)])
-    nb_oral_real = len(presentations) - len(presentations.loc[presentations         ["Commentaires"]
+    nb_oral_real = len(presentations) - len(presentations.loc[presentations["Commentaires"]
                                                      .str
                                                      .contains("cotutelle", na=False)])
     with open(outdir + "stats.txt", 'a') as f:
@@ -58,7 +58,7 @@ def make_stats(df, outdir):
         )
     count_attendees = attendees.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
     count_posters = posters.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
-    count_prez =  presentations.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
+    count_prez = presentations.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
     with open(outdir + "stats.txt", "a") as f:
         f.write("STATS PAR LABO \n"
                 "=============================================\n"
@@ -77,7 +77,7 @@ def make_stats(df, outdir):
 
     def formatter(x):
         return f"{total*x/100:.0f}"
-    
+
     df_stats = df.groupby("Labo")["Nom"].nunique()
     total = df_stats.sum()
     plt.figure()

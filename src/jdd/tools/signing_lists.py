@@ -22,7 +22,7 @@ def create_file(input_file, output_file):
     first_names = df['Prénom'].to_list()
     list_combined = tuple(zip(last_names, first_names))
     print(f'{Fore.BLUE}Writing tex file .....{Style.RESET_ALL}')
-    with open(output_file,'w') as file:
+    with open(output_file, 'w') as file:
         for item in list_combined:
             file.write(r"\Large\textsc{%s} & \Large %s &  &  &  \\ \hline" % item)
             file.write("\n")
