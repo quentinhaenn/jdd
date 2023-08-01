@@ -8,3 +8,9 @@
 
 [Settings]
 **/.vscode/**
+
+[Cpython]
+__pycache__/
+*.py[cod]
+*$py.class
+
