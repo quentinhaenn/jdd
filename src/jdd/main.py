@@ -1,8 +1,8 @@
 import pandas as pd
-import tools.stats as stats
-import tools.badges as badges
-import tools.signing_lists as signing
-import tools.qrcodes as qrcodes
+import jdd.tools.stats as stats
+import jdd.tools.badges as badges
+import jdd.tools.signing_lists as signing
+import jdd.tools.qrcodes as qrcodes
 import os
 from argparse import ArgumentParser
 from colorama import init as colorama_init
