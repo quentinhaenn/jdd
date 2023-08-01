@@ -2,7 +2,7 @@ import filecmp
 from jdd.tools.badges import create_file as badges_create
 from jdd.tools.signing_lists import create_file as signing_create
 from jdd.tools.stats import make_stats
-from jdd.main import create_namefiles, read_file
+from jdd.tools.init_files import create_namefiles, read_file
 
 TEST_DIR = "src/tests/"
 TESTFILE = TEST_DIR + "tests_participants.xlsx"

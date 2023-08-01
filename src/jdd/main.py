@@ -1,8 +1,8 @@
-import pandas as pd
 import tools.stats as stats
 import tools.badges as badges
 import tools.signing_lists as signing
 import tools.qrcodes as qrcodes
+import tools.init_files as init
 import os
 from argparse import ArgumentParser
 from colorama import init as colorama_init
@@ -17,32 +17,6 @@ if not os.path.isdir(OUTDIR) :
     os.mkdir(OUTDIR)
 
 colorama_init()
-
-def read_file(filename, sheetname_ensma, sheetname_up) :
-    """
-    read_file : Read excel file to generate dataframe.
-
-    Args:
-        filename (String): Name of the excel file, including extension.
-        sheetname_ensma (String): Name of the excel sheet concerning ensma.
-        sheetname_up (String): Name of the excel sheet concerning UP
-
-    Returns:
-        df_participants, df_ensma, df_up (Tuple): Tuple containing each dataframe created, in this order.
-    """
-    df_participant = pd.read_excel(filename, header=2, sheet_name=None)
-    df_ensma = df_participant[sheetname_ensma]
-    df_up = df_participant[sheetname_up]
-    df_participant = pd.concat([df_ensma, df_up])
-    df_ensma.reset_index(inplace=True)
-    df_up.reset_index(inplace=True)
-    df_participant.reset_index(inplace=True)
-    return df_participant, df_ensma, df_up
-
-def create_namefiles(df, output_name) :
-    df_noms = df[['Nom', 'Prénom']]
-    df_noms.to_csv(output_name + '.csv')
-
 
 def main():
     parser = ArgumentParser(
@@ -68,7 +42,7 @@ def main():
     args = parser.parse_args()
     print(args)
     print(os.getcwd())
-    df_participants, df_ensma, df_up = read_file(
+    df_participants, df_ensma, df_up = init.read_file(
         RESOURCEDIR + args.input_file, "ENSMA", "UP"
         )
 
@@ -78,9 +52,9 @@ def main():
         os.remove(RESOURCEDIR + "noms_complet.csv")
 
     print(f"{Fore.BLUE}Creating name files...{Style.RESET_ALL}")
-    create_namefiles(df_ensma, RESOURCEDIR + "noms_ensma")
-    create_namefiles(df_up, RESOURCEDIR + "noms_up")
-    create_namefiles(df_participants, RESOURCEDIR + "noms_complet")
+    init.create_namefiles(df_ensma, RESOURCEDIR + "noms_ensma")
+    init.create_namefiles(df_up, RESOURCEDIR + "noms_up")
+    init.create_namefiles(df_participants, RESOURCEDIR + "noms_complet")
     print('Done')
     print(f"{Fore.GREEN}{Style.BRIGHT}File created under '{RESOURCEDIR} directory{Style.RESET_ALL}")
 
