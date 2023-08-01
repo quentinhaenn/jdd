@@ -5,7 +5,8 @@ requires = [
     "seaborn",
     "matplotlib",
     "os",
-    "colorama"
+    "colorama",
+    "qrcode",
 ]
 build-backend = "setuptools.build_meta"
 
