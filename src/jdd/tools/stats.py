@@ -43,8 +43,8 @@ def make_stats(df, outdir):
                                                      .str
                                                      .contains("absent aux JDD", na=False)])
     nb_oral_real = len(presentations) - len(presentations.loc[presentations["Commentaires"]
-                                                     .str
-                                                     .contains("cotutelle", na=False)])
+                                                              .str
+                                                              .contains("cotutelle", na=False)])
     with open(outdir + "stats.txt", 'a') as f:
         f.write(
             "\n"
