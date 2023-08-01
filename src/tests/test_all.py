@@ -19,6 +19,7 @@ TRUE_BADGES = TEST_DIR + 'true_badges.tex'
 TRUE_LIST_ENSMA = TEST_DIR + 'true_list_ensma.tex'
 TRUE_LIST_UP = TEST_DIR + 'true_list_up.tex'
 
+
 def test_names():
     df_participants, df_ensma, df_up = read_file(TESTFILE, 'ENSMA', 'UP')
     create_namefiles(df_participants, TEST_NAME_ALL)
@@ -28,19 +29,20 @@ def test_names():
     create_namefiles(df_up, TEST_NAME_UP)
     assert filecmp.cmp(TEST_NAME_UP + ".csv", TRUE_NAME_UP, shallow=False), "Test Name UP FAILED"
 
+
 def test_badges():
     badges_create(TRUE_NAME_ALL, TEST_DIR + "test_badges.tex")
     assert filecmp.cmp(TEST_DIR + "test_badges.tex", TRUE_BADGES), "Test BADGES FAILED"
+
 
 def test_stats():
     df_participants, df_ensma, df_up = read_file(TESTFILE, 'ENSMA', 'UP')
     make_stats(df_participants, TEST_DIR)
     assert filecmp.cmp(TEST_DIR + "stats.txt", TRUE_STATS), "Test STATS FAILED"
 
+
 def test_signing_lists():
     signing_create(TRUE_NAME_ENSMA, TEST_DIR + 'test_list_ensma.tex')
     assert filecmp.cmp(TRUE_LIST_ENSMA, TEST_DIR + 'test_list_ensma.tex')
     signing_create(TRUE_NAME_UP, TEST_DIR + 'test_list_up.tex')
     assert filecmp.cmp(TRUE_LIST_UP, TEST_DIR + 'test_list_up.tex')
-
-

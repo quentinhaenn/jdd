@@ -13,10 +13,11 @@ OUTDIR = "out/"
 RESOURCEDIR = "src/resource/"
 TEXDIR = "out/tex/"
 
-if not os.path.isdir(OUTDIR) :
+if not os.path.isdir(OUTDIR):
     os.mkdir(OUTDIR)
 
 colorama_init()
+
 
 def main():
     parser = ArgumentParser(
@@ -26,7 +27,7 @@ def main():
     )
     parser.add_argument('input_file', help='Name or path of the input file')
     parser.add_argument(
-        '-b','--badges',
+        '-b', '--badges',
         action='store_true',
         help='When used, create badges based on template badges.tex')
     parser.add_argument('-s', '--signing-pages',
@@ -46,7 +47,7 @@ def main():
         RESOURCEDIR + args.input_file, "ENSMA", "UP"
         )
 
-    if os.path.exists(RESOURCEDIR + "noms_ensma.csv") :
+    if os.path.exists(RESOURCEDIR + "noms_ensma.csv"):
         os.remove(RESOURCEDIR + "noms_ensma.csv")
         os.remove(RESOURCEDIR + "noms_up.csv")
         os.remove(RESOURCEDIR + "noms_complet.csv")
@@ -58,30 +59,29 @@ def main():
     print('Done')
     print(f"{Fore.GREEN}{Style.BRIGHT}File created under '{RESOURCEDIR} directory{Style.RESET_ALL}")
 
-    if args.badges :
+    if args.badges:
         badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "badges.tex")
 
-    if args.signing_pages :
+    if args.signing_pages:
         signing.create_file(RESOURCEDIR + "noms_ensma.csv", TEXDIR + "list_ensma.tex")
         signing.create_file(RESOURCEDIR + "noms_up.csv", TEXDIR + "list_up.tex")
 
-
-    if args.make_stats :
+    if args.make_stats:
         stats.make_stats(df_participants, OUTDIR)
-    
-    if args.qr_code :
+
+    if args.qr_code:
         qrcodes.make_qr(OUTDIR)
 
-    if not (args.badges or args.signing_pages or args.make_stats or args.qr_code) :
+    if not (args.badges or args.signing_pages or args.make_stats or args.qr_code):
         badges.create_file(RESOURCEDIR + "noms_complet.csv", TEXDIR + "badges.tex")
         signing.create_file(RESOURCEDIR + "noms_ensma.csv", TEXDIR + "list_ensma.tex")
         signing.create_file(RESOURCEDIR + "noms_up.csv", TEXDIR + "list_up.tex")
         stats.make_stats(df_participants, OUTDIR)
-    
 
     print(f"{Fore.GREEN}=====================================\n"
           f"Every task has been done successfully.\n"
           f"====================================={Style.RESET_ALL}")
+
 
 if __name__ == '__main__':
     main()

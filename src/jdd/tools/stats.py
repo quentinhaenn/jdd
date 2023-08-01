@@ -1,16 +1,15 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 from colorama import init as colorama_init
 from colorama import Fore, Style
 
 colorama_init()
 
-def make_stats(df, outdir) :
+
+def make_stats(df, outdir):
     """
     make_stats Make some stats about JDDs attendees.
 
-    Provide : Number of expected participants, organized by purpose and a pie chart about how many people grouped by laboratory.
+    Give : Number of expected participants, organized by purpose and a pie chart about how many people grouped by laboratory.
 
     Args:
         df (pandas.DataFrame): dataframe containing all participants.
@@ -23,7 +22,7 @@ def make_stats(df, outdir) :
     attendees = df[df['JDD'].str.contains("ASSISTER")]
     posters = df[df['JDD'].str.contains("POSTER")]
     presentations = df[df['JDD'].str.contains("ORAL")]
-    with open(outdir + "stats.txt", 'w') as f :
+    with open(outdir + "stats.txt", 'w') as f:
         f.write(
             "==============================================\n"
             "\n"
@@ -43,10 +42,10 @@ def make_stats(df, outdir) :
     nb_posters_real = len(posters) - len(posters.loc[posters["Commentaires"]
                                                      .str
                                                      .contains("absent aux JDD", na=False)])
-    nb_oral_real = len(presentations) - len(presentations.loc[presentations["Commentaires"]
+    nb_oral_real = len(presentations) - len(presentations.loc[presentations         ["Commentaires"]
                                                      .str
                                                      .contains("cotutelle", na=False)])
-    with open(outdir + "stats.txt", 'a') as f :
+    with open(outdir + "stats.txt", 'a') as f:
         f.write(
             "\n"
             "==============================================\n"
@@ -60,12 +59,12 @@ def make_stats(df, outdir) :
     count_attendees = attendees.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
     count_posters = posters.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
     count_prez =  presentations.groupby("Labo")["Nom"].count().reset_index(name='nb_doctorant')
-    with open(outdir + "stats.txt", "a") as f :
+    with open(outdir + "stats.txt", "a") as f:
         f.write("STATS PAR LABO \n"
                 "=============================================\n"
                 "NOMBRE DE 1ERE ANNEE\n"
                 )
-        count_attendees.to_csv(f,header=None, index=None, sep=':')
+        count_attendees.to_csv(f, header=None, index=None, sep=':')
         f.write("=============================================\n"
                 "NOMBRE DE POSTERS\n")
         count_posters.to_csv(f, header=None, index=None, sep=':')
@@ -75,8 +74,10 @@ def make_stats(df, outdir) :
     print("Done")
     print(f"{Fore.GREEN}{Style.BRIGHT}File created under {outdir} directory{Style.RESET_ALL}")
     print(f"{Fore.BLUE}Creating pie charts...{Style.RESET_ALL}")
-    def formatter(x) :
+
+    def formatter(x):
         return f"{total*x/100:.0f}"
+    
     df_stats = df.groupby("Labo")["Nom"].nunique()
     total = df_stats.sum()
     plt.figure()

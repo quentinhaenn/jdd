@@ -1,6 +1,6 @@
 import pandas as pd
 
-def read_file(filename, sheetname_ensma, sheetname_up) :
+def read_file(filename, sheetname_ensma, sheetname_up):
     """
     read_file : Read excel file to generate dataframe.
 
@@ -21,6 +21,7 @@ def read_file(filename, sheetname_ensma, sheetname_up) :
     df_participant.reset_index(inplace=True)
     return df_participant, df_ensma, df_up
 
-def create_namefiles(df, output_name) :
+
+def create_namefiles(df, output_name):
     df_noms = df[['Nom', 'Prénom']]
     df_noms.to_csv(output_name + '.csv')

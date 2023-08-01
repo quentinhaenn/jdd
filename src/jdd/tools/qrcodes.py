@@ -5,6 +5,7 @@ from colorama import Style
 
 colorama_init()
 
+
 def make_qr(outdir):
     urls = input(f'{Fore.BLUE}Which URL(s) you want to create a QR code for ?\n'
                  "Please write each url separated with a comma\n"
