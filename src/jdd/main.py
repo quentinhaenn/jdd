@@ -25,7 +25,7 @@ def main():
         description='help to create badges and stuff for JDDs',
         epilog='If no option provided, will create all stuff at once'
     )
-    parser.add_argument('input_file', help='Name or path of the input file')
+    parser.add_argument('input_file', help='Name or path of the input file', required=False)
     parser.add_argument(
         '-b', '--badges',
         action='store_true',
@@ -41,8 +41,6 @@ def main():
                         help='When used, will prompt the commands to create qr codes from urls and generate png files.'
                         )
     args = parser.parse_args()
-    print(args)
-    print(os.getcwd())
     df_participants, df_ensma, df_up = init.read_file(
         RESOURCEDIR + args.input_file, "ENSMA", "UP"
         )
