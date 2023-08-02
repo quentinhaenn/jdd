@@ -11,3 +11,8 @@
 [Settings]
 **/.vscode/**
 out/**
+
+[NODE]
+/node_modules
+package-lock.json
+package.json

@@ -205,7 +205,20 @@ python<version> src/jdd/main.py -qr
 
 Then the console will ask you to type the url(s) you want to transform into QR codes as follow :
 
-[![asciicast](https://asciinema.org/a/ltJiXfQ6AboJfODHnnAs6e9RF.svg)](https://asciinema.org/a/ltJiXfQ6AboJfODHnnAs6e9RF)
+<p align="center">
+  <img width="600" src="./qrcodes.svg">
+</p>
+
+Have to run with this command for svg and asciinema rec :
+
+```bash
+asciinema rec <name>
+```
+
+then 
+```bash
+npx -p svg-term-cli svg-term --cast=ltJiXfQ6AboJfODHnnAs6e9RF --out qrcodes.svg --window
+```
 
 ### Combining Commands
 
