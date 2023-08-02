@@ -220,6 +220,8 @@ then
 npx -p svg-term-cli svg-term --cast=ltJiXfQ6AboJfODHnnAs6e9RF --out qrcodes.svg --window
 ```
 
+<script async id="asciicast-ltJiXfQ6AboJfODHnnAs6e9RF" src="https://asciinema.org/a/ltJiXfQ6AboJfODHnnAs6e9RF.js"></script>
+
 ### Combining Commands
 
 If you want to combine two commands, use the proper options to do so.
