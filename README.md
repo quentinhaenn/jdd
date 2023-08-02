@@ -205,7 +205,7 @@ python<version> src/jdd/main.py -qr
 
 Then the console will ask you to type the url(s) you want to transform into QR codes as follow :
 
-
+[![asciicast](https://asciinema.org/a/ltJiXfQ6AboJfODHnnAs6e9RF.svg)](https://asciinema.org/a/ltJiXfQ6AboJfODHnnAs6e9RF)
 
 ### Combining Commands
 
