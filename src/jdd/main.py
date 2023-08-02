@@ -25,7 +25,7 @@ def main():
         description='help to create badges and stuff for JDDs',
         epilog='If no option provided, will create all stuff at once'
     )
-    parser.add_argument('input_file', help='Name or path of the input file', required=False)
+    parser.add_argument('input_file', help='Name or path of the input file')
     parser.add_argument(
         '-b', '--badges',
         action='store_true',
