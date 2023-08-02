@@ -207,6 +207,8 @@ Then the console will ask you to type the url(s) you want to transform into QR c
 
 [![asciicast](https://asciinema.org/a/ltJiXfQ6AboJfODHnnAs6e9RF.svg)](https://asciinema.org/a/ltJiXfQ6AboJfODHnnAs6e9RF)
 
+<script async id="asciicast-ltJiXfQ6AboJfODHnnAs6e9RF" src="https://asciinema.org/a/ltJiXfQ6AboJfODHnnAs6e9RF.js"></script>
+
 ### Combining Commands
 
 If you want to combine two commands, use the proper options to do so.
