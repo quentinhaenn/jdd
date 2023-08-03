@@ -1,6 +1,19 @@
 [build-system]
-requires = ["setuptools"]
+requires = [
+    "setuptools",
+    "pandas",
+    "seaborn",
+    "matplotlib",
+    "os",
+    "colorama",
+    "qrcode",
+]
 build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src",
+]
 
 [project]
 name = "jdd"

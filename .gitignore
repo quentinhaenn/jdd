@@ -1,18 +1,19 @@
 [notebook]
 **.ipynb
+.ipynb_checkpoints/
 
 [resources]
-**.csv
-**.xlsx
-**.xls
+**/resource/**
 **/img/**
 
 
 [Settings]
 **/.vscode/**
-out/**
 
-[NODE]
-/node_modules
-package-lock.json
-package.json
+[Cpython]
+__pycache__/
+*.py[cod]
+*$py.class
+
+[results]
+out/**
