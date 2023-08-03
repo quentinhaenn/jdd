@@ -51,7 +51,7 @@ What's needed to make this work.
 - `Pandas` up-to-date
 - `openpyxl` up-to-date
 - `matplotlib` up-to-date
-- `qr` up-to-date
+- `qrcode` up-to-date
 - A complete and functional LaTeX distribution ([TeXLive](https://tug.org/texlive/acquire-netinstall.html) for instance)
 
 You don't need to install them manually, `pip` will do it for you when installing, but `Python` and `pip` are mandatory to do so.
@@ -241,17 +241,6 @@ Then the console will ask you to type the url(s) you want to transform into QR c
   <img width="600" src="./readme-ressource/qrcodes.svg">
 </p>
 
-Have to run with this command for svg and asciinema rec :
-
-```bash
-asciinema rec <name>
-```
-
-then 
-```bash
-npx -p svg-term-cli svg-term --cast=ltJiXfQ6AboJfODHnnAs6e9RF --out qrcodes.svg --window
-```
-
 ### Combining Commands
 
 If you want to combine two commands, use the proper options to do so.
@@ -280,10 +269,10 @@ The next steps for this project are :
 - [x] Make an out directory for all files created
 - [x] Create the QR code functionality -> [dedicated issue](https://github.com/quentinhaenn/jdd/issues/7)
 - [ ] Create the auto-order functionality -> [dedicated issue](https://github.com/quentinhaenn/jdd/issues/8)
-- [ ] Make all unit tests
+- [x] Make all unit tests
 - [x] Setup CI/CD
 - [ ] Deploy
-- [ ] Show examples
+- [x] Show examples
 - [ ] Make it available on PyPi
 
 You also can follow the project's progression on [issue tracker page](https://github.com/quentinhaenn/jdd/issues).
