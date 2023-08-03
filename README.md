@@ -17,11 +17,14 @@ This package is made to help MIMME's JDDs organization.
     - [Generate Everything](#generate-everything)
       - [Example](#example)
     - [Make stats](#make-stats)
+      - [Example of stats generation](#example-of-stats-generation)
     - [Make badges](#make-badges)
+      - [Example of badges generation](#example-of-badges-generation)
     - [Make signing pages](#make-signing-pages)
+      - [Example of signing pages generation](#example-of-signing-pages-generation)
     - [Make QR Codes](#make-qr-codes)
     - [Combining Commands](#combining-commands)
-      - [Example](#example-1)
+      - [Example of combining commands](#example-of-combining-commands)
   - [Next steps](#next-steps)
   - [Contributing](#contributing)
   - [Authors](#authors)
@@ -144,6 +147,11 @@ Considering you have python 3.7 installed and `participants-2024.xlsx` as input 
 python3.7 src/jdd/main.py participants-2024.xlsx
 ```
 
+This leads to this prompt :
+<p align="center">
+  <img width="600" src="./readme-ressource/allgen.svg">
+</p>
+
 ### Make stats
 
 This is used to make some stats about JDDs participants :
@@ -165,6 +173,14 @@ Or alternatively :
 python<version> src/jdd/main.py <name_of_excel_file> --make-stats
 ```
 
+#### Example of stats generation
+
+The following prompt is an example of statistics generation.
+
+<p align="center">
+  <img width="600" src="./readme-ressource/makestats.svg">
+</p>
+
 ### Make badges
 
 To make the `badges.tex` file used to automatically make badges with LaTeX, use the following prompt :
@@ -178,6 +194,14 @@ Or alternatively :
 ```bash
 python<version> src/jdd/main.py <name_of_excel_file> --badges
 ```
+
+#### Example of badges generation
+
+The following prompt is an example of badges generation.
+
+<p align="center">
+  <img width="600" src="./readme-ressource/makebadges.svg">
+</p>
 
 ### Make signing pages
 
@@ -193,6 +217,14 @@ Or alternatively :
 python<version> src/jdd/main.py <name_of_excel_file> --signing-lists
 ```
 
+#### Example of signing pages generation
+
+The following prompt is an example of signing pages generation.
+
+<p align="center">
+  <img width="600" src="./readme-ressource/signingpages.svg">
+</p>
+
 ### Make QR Codes
 
 Considering you have several documents accessible via url links, you can make your QR codes using this module.
@@ -206,7 +238,7 @@ python<version> src/jdd/main.py -qr
 Then the console will ask you to type the url(s) you want to transform into QR codes as follow :
 
 <p align="center">
-  <img width="600" src="./qrcodes.svg">
+  <img width="600" src="./readme-ressource/qrcodes.svg">
 </p>
 
 Have to run with this command for svg and asciinema rec :
@@ -224,7 +256,7 @@ npx -p svg-term-cli svg-term --cast=ltJiXfQ6AboJfODHnnAs6e9RF --out qrcodes.svg 
 
 If you want to combine two commands, use the proper options to do so.
 
-#### Example
+#### Example of combining commands
 
 You want to generate badges and signing lists but no stats :
 
