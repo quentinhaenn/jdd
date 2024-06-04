@@ -2,9 +2,6 @@
 **.ipynb
 .ipynb_checkpoints/
 
-[resources]
-**/resource/**
-**/img/**
 
 
 [Settings]
@@ -15,5 +12,3 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-[results]
-out/**
